@@ -1,8 +1,8 @@
 def main():
     import boto3
 
-    REGION = 'us-east-1'        # region to launch instance.
-    AMI = 'ami-afd15ed0'        # AMI of the Virtual Machine
+    REGION = 'ap-south-1'        # region to launch instance.
+    AMI = 'ami-074dc0a6f6c764218'        # AMI of the Virtual Machine
     INSTANCE_TYPE = 't2.micro'  # instance type to launch.
     EC2 = boto3.resource('ec2', region_name=REGION)
 
@@ -16,7 +16,7 @@ def main():
 
     print ("New Instance Created With ID:",instance[0].instance_id)
     
-    EC2.create_tags(Resources=[instance[0].instance_id], Tags=[{'Key':'Name', 'Value':'BG_Test_Linux_Host'}])       #Tag A Name To New Instance
+    EC2.create_tags(Resources=[instance[0].instance_id], Tags=[{'Key':'Name', 'Value':'lambda ec2'}])       #Tag A Name To New Instance
     
     return instance[0].instance_id
 
